@@ -1,0 +1,20 @@
+spring:
+  liquibase:
+    enabled: false
+  datasource:
+    url: ${DB_URL:jdbc:postgresql://localhost:5432/abituriens}
+    username: ${DB_USERNAME:khojiakbar}
+    password: ${DB_PASSWORD:}
+  jpa:
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate:
+        dialect: org.hibernate.dialect.PostgreSQLDialect
+        format_sql: true
+frontend-url: ${FRONTEND_URL:http://localhost:4200}
+logging:
+  level:
+    org:
+      springframework:
+        security: error
