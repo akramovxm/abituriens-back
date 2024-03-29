@@ -5,6 +5,7 @@ import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.time.LocalDate;
 import java.util.Collection;
 
 @Entity(name = "users")
@@ -26,12 +27,15 @@ public class User extends BaseEntity implements UserDetails {
     @Column(nullable = false)
     private String lastName;
 
+    @Column(nullable = false, unique = true)
+    private String phoneNumber;
+
+    @Column(nullable = false)
+    private LocalDate birthDate;
+
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
     private Role role;
-
-    @Column
-    private String verifyCode;
 
     @Column(nullable = false)
     private boolean locked = false;

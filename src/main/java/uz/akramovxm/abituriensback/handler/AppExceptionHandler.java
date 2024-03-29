@@ -2,6 +2,8 @@ package uz.akramovxm.abituriensback.handler;
 
 import jakarta.validation.ConstraintViolationException;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.converter.HttpMessageNotReadableException;
+import org.springframework.mail.MailAuthenticationException;
 import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.validation.FieldError;
@@ -34,6 +36,18 @@ public class AppExceptionHandler {
     @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
     @ResponseStatus(HttpStatus.BAD_REQUEST)
     public ErrorResponse handleHttpMessageNotReadable(HttpRequestMethodNotSupportedException e) {
+        return new ErrorResponse(e.getMessage());
+    }
+
+    @ExceptionHandler(HttpMessageNotReadableException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleHttpMessageNotReadable(HttpMessageNotReadableException e) {
+        return new ErrorResponse(e.getMessage());
+    }
+
+    @ExceptionHandler(MailAuthenticationException.class)
+    @ResponseStatus(HttpStatus.BAD_REQUEST)
+    public ErrorResponse handleMailAuthentication(MailAuthenticationException e) {
         return new ErrorResponse(e.getMessage());
     }
 

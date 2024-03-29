@@ -6,6 +6,9 @@ import org.springframework.stereotype.Component;
 import uz.akramovxm.abituriensback.entity.Role;
 import uz.akramovxm.abituriensback.service.UserService;
 
+import java.time.LocalDate;
+import java.util.Date;
+
 @Component
 public class DataLoader implements CommandLineRunner {
     @Autowired
@@ -13,8 +16,38 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        userService.createUser("admin", "admin", "admin@mail.com", "123", Role.ADMIN, false, true);
-        userService.createUser("teacher", "teacher", "teacher@mail.com", "123", Role.TEACHER, false, true);
-        userService.createUser("pupil", "pupil", "pupil@mail.com", "123", Role.PUPIL, false, true);
+        userService.createUser(
+                "admin",
+                "admin",
+                "admin@mail.com",
+                "123",
+                "998909118611",
+                LocalDate.now(),
+                Role.ADMIN,
+                false,
+                true
+        );
+        userService.createUser(
+                "teacher",
+                "teacher",
+                "teacher@mail.com",
+                "123",
+                "998909118612",
+                LocalDate.now(),
+                Role.TEACHER,
+                false,
+                true
+        );
+        userService.createUser(
+                "pupil",
+                "pupil",
+                "pupil@mail.com",
+                "123",
+                "998909118613",
+                LocalDate.now(),
+                Role.PUPIL,
+                false,
+                true
+        );
     }
 }
