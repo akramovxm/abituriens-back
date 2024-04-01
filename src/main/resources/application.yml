@@ -2,9 +2,9 @@ spring:
   liquibase:
     enabled: false
   datasource:
-    url: ${DB_URL:jdbc:postgresql://localhost:5432/abituriens}
-    username: ${DB_USERNAME:khojiakbar}
-    password: ${DB_PASSWORD:}
+    url: ${DB_URL}
+    username: ${DB_USERNAME}
+    password: ${DB_PASSWORD}
   jpa:
     hibernate:
       ddl-auto: create-drop
@@ -15,15 +15,41 @@ spring:
   mail:
     host: smtp.gmail.com
     port: 587
-    username: akromov.x.1995@gmail.com
-    password: xkquslvgakgsxips
+    username: ${MAIL_USERNAME}
+    password: ${MAIL_PASSWORD}
     properties:
       mail:
         smtp:
           auth: true
           starttls:
             enable: true
-frontend-url: ${FRONTEND_URL:http://localhost:4200}
+  security:
+    oauth2:
+      client:
+        registration:
+          google:
+            client-id: ${GOOGLE_CLIENT_ID}
+            client-secret: ${GOOGLE_CLIENT_SECRET}
+            redirect-uri: ${BACKEND_URL}/oauth2/callback/{registrationId}
+            scope:
+              - email
+              - profile
+          facebook:
+            client-id: 2788756061299954
+            client-secret: b00fb2c3942eba4dfbb6670781c598de
+            redirect-uri: ${BACKEND_URL}/oauth2/callback/{registrationId}
+            scope:
+              - email
+              - public_profile
+        provider:
+          facebook:
+            authorization-uri: https://www.facebook.com/v3.0/dialog/oauth
+            token-uri: https://graph.facebook.com/v3.0/oauth/access_token
+            user-info-uri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,picture
+app:
+  oauth2:
+    authorizedRedirectUri: ${FRONTEND_URL}/oauth2/redirect
+frontend-url: ${FRONTEND_URL}
 logging:
   level:
     org:

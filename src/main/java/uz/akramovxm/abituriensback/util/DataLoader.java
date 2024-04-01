@@ -16,7 +16,7 @@ public class DataLoader implements CommandLineRunner {
 
     @Override
     public void run(String... args) {
-        userService.createUser(
+        userService.create(
                 "admin",
                 "admin",
                 "admin@mail.com",
@@ -27,7 +27,7 @@ public class DataLoader implements CommandLineRunner {
                 false,
                 true
         );
-        userService.createUser(
+        userService.create(
                 "teacher",
                 "teacher",
                 "teacher@mail.com",
@@ -38,7 +38,7 @@ public class DataLoader implements CommandLineRunner {
                 false,
                 true
         );
-        userService.createUser(
+        userService.create(
                 "pupil",
                 "pupil",
                 "pupil@mail.com",

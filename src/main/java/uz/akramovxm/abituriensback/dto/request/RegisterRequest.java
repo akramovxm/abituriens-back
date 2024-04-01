@@ -28,12 +28,7 @@ public class RegisterRequest {
     @NotBlank(message = "password must not be empty")
     private String password;
 
-    @NotNull(message = "phoneNumber must not be null")
-    @NotBlank(message = "phoneNumber must not be empty")
-    @Digits(message = "Number should contain 9 digits", fraction = 0, integer = 9)
     private String phoneNumber;
 
-    @NotNull(message = "birthDate must not be null")
-    @Past(message = "birthDate must be past")
     private LocalDate birthDate;
 }

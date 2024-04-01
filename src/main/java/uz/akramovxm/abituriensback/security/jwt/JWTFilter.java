@@ -1,4 +1,4 @@
-package uz.akramovxm.abituriensback.security;
+package uz.akramovxm.abituriensback.security.jwt;
 
 import io.jsonwebtoken.JwtException;
 import jakarta.servlet.FilterChain;

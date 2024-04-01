@@ -12,7 +12,7 @@ import uz.akramovxm.abituriensback.dto.request.ResendCodeRequest;
 import uz.akramovxm.abituriensback.dto.request.VerifyRequest;
 import uz.akramovxm.abituriensback.entity.Role;
 import uz.akramovxm.abituriensback.entity.User;
-import uz.akramovxm.abituriensback.security.JWTProvider;
+import uz.akramovxm.abituriensback.security.jwt.JWTProvider;
 import uz.akramovxm.abituriensback.service.AuthService;
 import uz.akramovxm.abituriensback.service.MessageService;
 import uz.akramovxm.abituriensback.service.UserService;
@@ -53,7 +53,7 @@ public class AuthServiceImpl implements AuthService {
     @Transactional
     @Override
     public void register(RegisterRequest request) {
-        userService.createUser(
+        userService.create(
                 request.getFirstName(),
                 request.getLastName(),
                 request.getEmail(),
