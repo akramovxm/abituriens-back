@@ -1,4 +1,17 @@
+app:
+  oauth2:
+    authorizedRedirectUri: ${FRONTEND_URL}/oauth2/redirect
+frontend-url: ${FRONTEND_URL}
+logging:
+  level:
+    org:
+      springframework:
+        security: error
+
 spring:
+  sql:
+    init:
+      mode: always
   liquibase:
     enabled: false
   datasource:
@@ -7,11 +20,12 @@ spring:
     password: ${DB_PASSWORD}
   jpa:
     hibernate:
-      ddl-auto: create-drop
+      ddl-auto: create
     properties:
       hibernate:
         dialect: org.hibernate.dialect.PostgreSQLDialect
         format_sql: true
+    defer-datasource-initialization: true
   mail:
     host: smtp.gmail.com
     port: 587
@@ -46,12 +60,3 @@ spring:
             authorization-uri: https://www.facebook.com/v3.0/dialog/oauth
             token-uri: https://graph.facebook.com/v3.0/oauth/access_token
             user-info-uri: https://graph.facebook.com/v3.0/me?fields=id,first_name,middle_name,last_name,name,email,picture
-app:
-  oauth2:
-    authorizedRedirectUri: ${FRONTEND_URL}/oauth2/redirect
-frontend-url: ${FRONTEND_URL}
-logging:
-  level:
-    org:
-      springframework:
-        security: error
